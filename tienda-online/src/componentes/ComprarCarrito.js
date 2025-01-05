@@ -53,7 +53,7 @@ const ComprarCarrito = () => {
 	});
 
 	const onSubmit = (body) => {
-		body.estado = 1002;
+		body.estado = 12;
 		fetch(`http://localhost:4000/actualizarOrden/${id}`, {
 			method: 'PUT',
 			body: JSON.stringify(body),

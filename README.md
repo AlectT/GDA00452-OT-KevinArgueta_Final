@@ -26,6 +26,41 @@ Tecnologías utilizadas generales
 - 2. NodeJS
 - 3. ReactJS
 
-### P.D
+## Registros de prueba en el script sql
+
+He dejado preparado algunos registros en el script de la base de datos para que se les faciliten las pruebas que gusten hacer. Si desean agregar nuevos usuarios les recomendaría hacerlo desde la aplicación con react, para poder encriptar la contraseña a través del API. Dejé 3 usuarios registrados con los cuales ya podrían ingresar a traves del login. Los datos para el login son:
+
+_Usuario Operador_
+correo: adminGeneral@gmail.com
+contraseña: 12345
+
+_Primer Cliente_
+correo: primerCliente@gmail.com
+contraseña: 12345
+
+_Segundo Cliente_
+correo: segundoCliente@gmail.com
+contraseña: 12345
+
+_Registros Clientes_
+Dejé algunos registros de clientes de prueba por si desean agregar nuevos usuarios con rol cliente puedan usar esos y no tener que necesariamente registrar nuevos clientes también
+
+_Registros Categorias_
+Dejé solo una categoría para que puedan probar agregar nuevos productos a esa categoría pero también agregar nuevas categorías para otros productos
+
+_Registros Productos_
+Solo dejé 2 registros para que puedan ver su funcionalidad básica, pero estos no cuentan con fotos ya que guardar una foto desde sql ocupa muchas lineas, ya que son archivos binarios, lo mejor sería que agreguen nuevos productos desde la aplicación con sus respectivas fotos o bien actualizar esos 2 registros de productos para agregarles su foto
+P.D. La foto tiene que tener un peso máximo de 50KB
+
+_Registros Roles_
+Ya dejé preparados los roles dentro del script, siendo solo rol cliente y rol operador
+
+_Registros Estados_
+Los estados también ya los dejé preparados, para productos, categorías, usuarios y ordenes
+
+_Registros Ordenes y Detalles_
+Estos he decidido no dejar ninguno preparado para que puedan crear ustedes sus propios carritos con los usuarios de clientes
+
+### P.D.
 
 Una disculpa de antemano por haber cambiado de repositorio, pensé que se subirían en repositorios diferentes el API de la interfaz. En este repositorio está completo el proyecto. DB + API + REACT

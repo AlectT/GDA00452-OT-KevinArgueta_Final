@@ -217,9 +217,6 @@ as
 
   end;
 
-drop procedure pCrearProducto;
-
-
 create procedure pCrearOrdenDetalles
   @orden int,
   @producto int,
@@ -503,93 +500,16 @@ exec pCrearEstado @nombre = 'Orden rechazada'; -- 8
 exec pCrearEstado @nombre = 'Orden confirmada'; -- 9
 exec pCrearEstado @nombre = 'Entregado'; -- 10
 exec pCrearEstado @nombre = 'Orden cancelada'; -- 11
-exec pCrearEstado @nombre = 'Solicitud de orden'; -- 1002
+exec pCrearEstado @nombre = 'Solicitud de orden'; -- 12
 
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 1, @correo = 'pepeA@gmail.com', @nombre = 'Pepe Antonio Fuentes Gonzales', @password = 'pepeA2002', @telefono = '12345678', @fecha_nacimiento = '2002-06-18', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 2, @estado = 5, @cliente = NULL, @correo = 'julianF@gmail.com', @nombre = 'Julian Fernando Perez Alvarado', @password = 'julianF2000', @telefono = '55667788', @fecha_nacimiento = '2000-02-16', @fecha_creacion = '2024-12-05 14:02:48';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 2, @correo = 'GTP@gmail.com', @nombre = 'Productos Guatemaltecos', @password = 'GTP2010', @telefono = '11223344', @fecha_nacimiento = '2010-01-15', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 4, @correo = 'hugoG@gmail.com', @nombre = 'Hugo Gonzales', @password = 'HugoG2000', @telefono = '34567891', @fecha_nacimiento = '2002-06-18', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 5, @correo = 'franciscoC@gmail.com', @nombre = 'Francisco Caravantes', @password = 'FranC2000', @telefono = '45678912', @fecha_nacimiento = '2000-02-18', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 6, @correo = 'anaT@gmail.com', @nombre = 'Ana Taracena', @password = 'AnaT2000', @telefono = '56789123', @fecha_nacimiento = '1995-10-25', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 7, @correo = 'julianL@gmail.com', @nombre = 'Julian Lopez', @password = 'JulianL2000', @telefono = '67891234', @fecha_nacimiento = '2008-12-01', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 8, @correo = 'douglasA@gmail.com', @nombre = 'Douglas Argueta', @password = 'DouglasA2000', @telefono = '78912345', @fecha_nacimiento = '1999-03-03', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 9, @correo = 'evelynG@gmail.com', @nombre = 'Evelyn Garcia', @password = 'EvelynG2000', @telefono = '89123456', @fecha_nacimiento = '1992-02-03', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 10, @correo = 'alexA@gmail.com', @nombre = 'Alex Alvarado', @password = 'AlexA2000', @telefono = '91234567', @fecha_nacimiento = '2002-11-09', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 11, @correo = 'brandonR@gmail.com', @nombre = 'Brandon Rodriguez', @password = 'BrandonR2000', @telefono = '10203040', @fecha_nacimiento = '2007-12-18', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 12, @correo = 'aryF@gmail.com', @nombre = 'AryFernandez', @password = 'AryF2000', @telefono = '50607080', @fecha_nacimiento = '2004-06-18', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 13, @correo = 'yanethM@gmail.com', @nombre = 'Yaneth Marinez', @password = 'yanethM2000', @telefono = '23456789', @fecha_nacimiento = '2000-04-12', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 14, @correo = 'andreaR@gmail.com', @nombre = 'Andrea Ramirez', @password = 'AndreaR2000', @telefono = '23456789', @fecha_nacimiento = '1998-07-15', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 15, @correo = 'madeline@gmail.com', @nombre = 'Madeline de leon', @password = 'Madeline2000', @telefono = '98765432', @fecha_nacimiento = '2006-09-10', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 3, @correo = 'angelP@gmail.com', @nombre = 'Angel Perez', @password = 'AngelP2000', @telefono = '23456789', @fecha_nacimiento = '2002-05-12', @fecha_creacion = '2024-12-05 13:58:30';
-exec pCrearUsuario @rol = 2, @estado = 5, @cliente = null, @correo = 'pass@gmail.com', @nombre = 'test password', @password = '$2b$08$0jZLUfljulEaPn6Ya5zieewuZjh2iTBolgqi93ZaLlcfwSmW.LnpS', @telefono = '23456789', @fecha_nacimiento = '2002-05-12', @fecha_creacion = '2024-12-05 13:58:30';
+exec pCrearUsuario @rol = 2, @estado = 5, @cliente = null, @correo = 'adminGeneral@gmail.com', @nombre = 'Usuario para operador', @password = '$2b$08$0jZLUfljulEaPn6Ya5zieewuZjh2iTBolgqi93ZaLlcfwSmW.LnpS', @telefono = '12345678', @fecha_nacimiento = '2002-05-12', @fecha_creacion = '2024-12-05 13:58:30';
+exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 1, @correo = 'primerCliente@gmail.com', @nombre = 'Primer cliente', @password = '$2b$08$0jZLUfljulEaPn6Ya5zieewuZjh2iTBolgqi93ZaLlcfwSmW.LnpS', @telefono = '12345678', @fecha_nacimiento = '2005-04-12', @fecha_creacion = '2024-12-05 13:58:30';
+exec pCrearUsuario @rol = 1, @estado = 5, @cliente = 2, @correo = 'segundoCliente@gmail.com', @nombre = 'Segundo cliente', @password = '$2b$08$0jZLUfljulEaPn6Ya5zieewuZjh2iTBolgqi93ZaLlcfwSmW.LnpS', @telefono = '12345678', @fecha_nacimiento = '2000-01-19', @fecha_creacion = '2024-12-05 13:58:30';
 
-exec pCrearCategoriaP @usuario = 2, @nombre = 'Limpieza', @estado = 3, @fecha_creacion = '2024-12-05 14:17:20';
-exec pCrearCategoriaP @usuario = 2, @nombre = 'Herramientas', @estado = 3, @fecha_creacion = '2024-12-05 14:20:35';
-exec pCrearCategoriaP @usuario = 2, @nombre = 'Cocina', @estado = 3, @fecha_creacion = '2024-12-05 14:20:35';
-exec pCrearCategoriaP @usuario = 2, @nombre = 'Hogar', @estado = 4, @fecha_creacion = '2024-12-05 14:20:35';
-exec pCrearCategoriaP @usuario = 2, @nombre = 'Decoracion', @estado = 3, @fecha_creacion = '2024-12-05 14:20:35';
+exec pCrearCategoriaP @usuario = 1, @nombre = 'Herramientas', @estado = 3, @fecha_creacion = '2024-12-05 14:20:35';
 
-exec pCrearOrden @usuario = 1, @estado = 7, @fecha_creacion = '2024-12-05 14:30:31', @nombre = 'Pepe Antonio Fuentes Gonzales', @direccion = '5av zona 1 Guatemala', @telefono = '12345678', @correo = 'pepeA@gmail.com', @fecha = '2024-12-08', @total = 300.00;
-exec pCrearOrden @usuario = 1, @estado = 7, @fecha_creacion = '2024-12-05 14:30:31', @nombre = 'Pepe Antonio Fuentes Gonzales', @direccion = '5av zona 1 Guatemala', @telefono = '12345678', @correo = 'pepeA@gmail.com', @fecha = '2024-12-08', @total = 300.00;
-exec pCrearOrden @usuario = 1, @estado = 7, @fecha_creacion = '2024-08-05 14:30:31', @nombre = 'Pepe Antonio Fuentes Gonzales', @direccion = '5av zona 1 Guatemala', @telefono = '12345678', @correo = 'pepeA@gmail.com', @fecha = '2024-12-08', @total = 120.00;
-exec pCrearOrden @usuario = 3, @estado = 7, @fecha_creacion = '2024-08-02 14:30:31', @nombre = 'Productos Guatemaltecos', @direccion = 'zona 2', @telefono = '11223344', @correo = 'GTP@gmail.com', @fecha = '2024-12-08', @total = 20.00;
-exec pCrearOrden @usuario = 4, @estado = 7, @fecha_creacion = '2024-08-20 14:30:31', @nombre = 'Hugo Gonzales', @direccion = 'zona 3', @telefono = '34567891', @correo = 'hugoG@gmail.com', @fecha = '2024-12-08', @total = 50.00;
-exec pCrearOrden @usuario = 5, @estado = 7, @fecha_creacion = '2024-08-10 14:30:31', @nombre = 'Francisco Caravantes', @direccion = 'zona 3', @telefono = '45678912', @correo = 'franciscoC@gmail.com', @fecha = '2024-12-08', @total = 10.5;
-exec pCrearOrden @usuario = 6, @estado = 7, @fecha_creacion = '2024-10-02 14:30:31', @nombre = 'Ana Taracena', @direccion = 'zona 12', @telefono = '56789123', @correo = 'anaT@gmail.com', @fecha = '2024-12-08', @total = 150.00;
-exec pCrearOrden @usuario = 7, @estado = 7, @fecha_creacion = '2024-12-02 14:30:31', @nombre = 'Julian Lopez', @direccion = 'zona 3', @telefono = '67891234', @correo = 'julianL@gmail.com', @fecha = '2024-12-08', @total = 100.00;
-exec pCrearOrden @usuario = 8, @estado = 7, @fecha_creacion = '2024-08-02 14:30:31', @nombre = 'Douglas Argueta', @direccion = 'zona 21', @telefono = '78912345', @correo = 'douglasA@gmail.com', @fecha = '2024-12-08', @total = 80.00;
-exec pCrearOrden @usuario = 9, @estado = 7, @fecha_creacion = '2024-11-20 14:30:31', @nombre = 'Evelyn Garcia', @direccion = 'zona 2', @telefono = '89123456', @correo = 'evelynG@gmail.com', @fecha = '2024-12-08', @total = 60.00;
-exec pCrearOrden @usuario = 10, @estado = 7, @fecha_creacion = '2024-08-29 14:30:31', @nombre = 'Alex Alvarado', @direccion = 'zona 1', @telefono = '91234567', @correo = 'alexA@gmail.com', @fecha = '2024-12-08', @total = 30.00;
-exec pCrearOrden @usuario = 11, @estado = 7, @fecha_creacion = '2024-10-10 14:30:31', @nombre = 'Brandon Rodriguez', @direccion = 'zona 21', @telefono = '10203040', @correo = 'brandonR@gmail.com', @fecha = '2024-12-08', @total = 130.00;
-exec pCrearOrden @usuario = 12, @estado = 7, @fecha_creacion = '2024-11-07 14:30:31', @nombre = 'Ary Fernandez', @direccion = 'zona 18', @telefono = '50607080', @correo = 'aryF@gmail.com', @fecha = '2024-12-08', @total = 70.00;
-exec pCrearOrden @usuario = 13, @estado = 7, @fecha_creacion = '2024-12-06 14:30:31', @nombre = 'Yaneth Marinez', @direccion = 'zona 6', @telefono = '23456789', @correo = 'yanethM@gmail.com', @fecha = '2024-12-08', @total = 85.5;
-exec pCrearOrden @usuario = 14, @estado = 7, @fecha_creacion = '2024-08-30 14:30:31', @nombre = 'Andrea Ramirez', @direccion = 'zona 5', @telefono = '23456789', @correo = 'andreaR@gmail.com', @fecha = '2024-12-08', @total = 90.5;
-exec pCrearOrden @usuario = 15, @estado = 7, @fecha_creacion = '2024-09-13 14:30:31', @nombre = 'Madeline de leon', @direccion = 'zona 12', @telefono = '98765432', @correo = 'madeline@gmail.com', @fecha = '2024-12-08', @total = 100.00;
-exec pCrearOrden @usuario = 3, @estado = 7, @fecha_creacion = '2024-10-24 14:30:31', @nombre = 'Angel Perez', @direccion = 'zona 11', @telefono = '23456789', @correo = 'angelP@gmail.com', @fecha = '2024-12-08', @total = 45.00;
-exec pCrearOrden @usuario = 1002, @estado = 7, @fecha_creacion = '2024-10-24 14:30:31', @nombre = 'x', @direccion = 'x', @telefono = 'x', @correo = 'x', @fecha = '2024-12-25', @total = 40.00;
-
-exec pCrearProducto @categoria = 1, @usuario = 2, @estado = 1, @nombre = 'escoba', @marca = 'patito', @codigo = 'AAA11', @stock = 5, @precio = 10.5, @fecha_creacion = '2024-12-05 14:40:14', @foto = null;
-exec pCrearProducto @categoria = 2, @usuario = 2, @estado = 1, @nombre = 'martillo', @marca = 'cemaco', @codigo = 'AAA22', @stock = 6, @precio = 22.3, @fecha_creacion = '2024-12-05 14:42:14', @foto = null;
-exec pCrearProducto @categoria = 2, @usuario = 2, @estado = 2, @nombre = 'Clavos', @marca = 'cemaco', @codigo = 'AAA33', @stock = 0, @precio = 22.3, @fecha_creacion = '2024-12-05 14:42:14', @foto = null;
-exec pCrearProducto @categoria = 4, @usuario = 2, @estado = 1, @nombre = 'Foco', @marca = 'patito', @codigo = 'AAA44', @stock = 0, @precio = 10, @fecha_creacion = '2024-12-05 14:42:14', @foto = null;
-exec pCrearProducto @categoria = 3, @usuario = 2, @estado = 2, @nombre = 'Sarten', @marca = 'Cocina Feliz', @codigo = 'AAA55', @stock = 5, @precio = 55.8, @fecha_creacion = '2024-12-05 14:42:14', @foto = null;
-exec pCrearProducto @categoria = 1002, @usuario = 22, @estado = 1, @nombre = 'Lapiz', @marca = 'Maped', @codigo = 'AAA66', @stock = 35, @precio = 1, @fecha_creacion = '2024-12-20 12:32:41', @foto = null;
-
-exec pCrearOrdenDetalles @orden = 1, @producto = 2, @cantidad = 2, @precio = 22.3, @subtotal = 44.6;
-exec pCrearOrdenDetalles @orden = 1, @producto = 1, @cantidad = 1, @precio = 10.5, @subtotal = 21;
-exec pCrearOrdenDetalles @orden = 17, @producto = 2, @cantidad = 5, @precio = 10.5, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 17, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 16, @producto = 5, @cantidad = 1, @precio = 22.4, @subtotal = 22.4;
-exec pCrearOrdenDetalles @orden = 4, @producto = 2, @cantidad = 2, @precio = 22.3, @subtotal = 44.6;
-exec pCrearOrdenDetalles @orden = 5, @producto = 4, @cantidad = 10, @precio = 10, @subtotal = 100;
-exec pCrearOrdenDetalles @orden = 6, @producto = 5, @cantidad = 4, @precio = 55.8, @subtotal = 200;
-exec pCrearOrdenDetalles @orden = 6, @producto = 1, @cantidad = 1, @precio = 10.5, @subtotal = 10.5;
-exec pCrearOrdenDetalles @orden = 6, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 7, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 7, @producto = 5, @cantidad = 1, @precio = 10, @subtotal = 10;
-exec pCrearOrdenDetalles @orden = 7, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 7, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 7, @producto = 5, @cantidad = 1, @precio = 10, @subtotal = 10;
-exec pCrearOrdenDetalles @orden = 7, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 8, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 8, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 9, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 9, @producto = 5, @cantidad = 1, @precio = 10, @subtotal = 10;
-exec pCrearOrdenDetalles @orden = 9, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 10, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 10, @producto = 5, @cantidad = 1, @precio = 10, @subtotal = 10;
-exec pCrearOrdenDetalles @orden = 10, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 11, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 11, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 12, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 12, @producto = 5, @cantidad = 1, @precio = 10, @subtotal = 10;
-exec pCrearOrdenDetalles @orden = 12, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 13, @producto = 3, @cantidad = 3, @precio = 22.4, @subtotal = 66;
-exec pCrearOrdenDetalles @orden = 13, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 14, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 14, @producto = 5, @cantidad = 1, @precio = 10, @subtotal = 10;
-exec pCrearOrdenDetalles @orden = 15, @producto = 4, @cantidad = 2, @precio = 22.4, @subtotal = 45;
-exec pCrearOrdenDetalles @orden = 15, @producto = 5, @cantidad = 1, @precio = 10, @subtotal = 10;
+exec pCrearProducto @categoria = 1, @usuario = 1, @estado = 1, @nombre = 'Martillo', @marca = 'DeWALT', @codigo = 'MartilloDW', @stock = 30, @precio = 115, @fecha_creacion = '2024-12-05 14:42:14', @foto = null;
+exec pCrearProducto @categoria = 1, @usuario = 1, @estado = 2, @nombre = 'Clavos', @marca = 'DeWALT', @codigo = 'ClavosDW', @stock = 250, @precio = 10.5, @fecha_creacion = '2024-12-05 14:42:14', @foto = null;
 
 -----------------------------------------PROCEDIMIENTOS DE ACTUALIZACION DE ESTADOS---------------------------
 

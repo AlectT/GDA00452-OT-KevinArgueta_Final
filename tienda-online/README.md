@@ -131,3 +131,7 @@ Mediante la utilización de useContext se ha creado un sistema para evitar que u
 - Actualizar datos de Productos
 - Activar/Desactivar Usuarios, Categorias y Productos
 - Cerrar sesión
+
+### P.D.
+
+Cada que cierren sesión con cualquier usuario, recomendaría hacer F5 en la página de login, para evitar confusión con las cookies
