@@ -25,3 +25,7 @@ Tecnologías utilizadas generales
 - 1. Microsoft SQL Server Management Studio
 - 2. NodeJS
 - 3. ReactJS
+
+### P.D
+
+Una disculpa de antemano por haber cambiado de repositorio, pensé que se subirían en repositorios diferentes el API de la interfaz. En este repositorio está completo el proyecto. DB + API + REACT
