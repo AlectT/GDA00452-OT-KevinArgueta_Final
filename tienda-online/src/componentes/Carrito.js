@@ -25,6 +25,7 @@ const Carrito = () => {
 	const { cSesion, idU, rol } = useAuth();
 	const navigate = useNavigate();
 
+	// Lógica para limpiar el carrito con una petición al API
 	const limpiarCarrito = () => {
 		if (cSesion) {
 			fetch(`http://localhost:4000/limpiarCarrito/${datos[0].idOrden}`, {
@@ -42,6 +43,8 @@ const Carrito = () => {
 		}
 	};
 
+	// Lógica para evitar que puedan ver carritos de otras personas
+	// ? Solo los operadores podrán ver todos los carritos, pero no modificar los datos
 	useEffect(() => {
 		if (datos && rol) {
 			if (rol !== 'O') {
@@ -60,6 +63,7 @@ const Carrito = () => {
 					<ContenedorCarrito>
 						<Encabezado $titulo>
 							<div>Tu carrito</div>
+							{/* Si el carrito está vacío no mostrará el botón de limpiar carrito o si el carrito ya no tiene estado en proceso */}
 							{datos[0].total_orden !== 0 && datos[0].nombreEstado === 'Orden en proceso' && (
 								<button onClick={() => limpiarCarrito()}>
 									limpiar carrito <FontAwesomeIcon icon={faWarning} />
@@ -68,6 +72,19 @@ const Carrito = () => {
 						</Encabezado>
 						{datos[0].total_orden !== 0 ? (
 							datos.map((producto, index) => {
+								// Creación de transformar la iamgen de base64 a img y luego a url
+								let url;
+								if (producto.foto !== null) {
+									const byteFoto = atob(producto.foto);
+									const sizeFoto = byteFoto.length;
+									const bytesImagen = new Uint8Array(sizeFoto);
+									for (let i = 0; i < sizeFoto; i++) {
+										bytesImagen[i] = byteFoto.charCodeAt(i);
+									}
+
+									const blob = new Blob([bytesImagen], { type: 'image/png' });
+									url = URL.createObjectURL(blob);
+								}
 								return (
 									<ProductoCarrito key={index}>
 										<ContenedorDetallesCarrito>
@@ -76,7 +93,11 @@ const Carrito = () => {
 										</ContenedorDetallesCarrito>
 										<EditarCantidadDetalle producto={producto} cSesion={cSesion} />
 										<ImagenCarrito>
-											<img src={logo} alt="logo" />
+											{url ? (
+												<img src={url} alt="Imagen del producto" />
+											) : (
+												<img src={logo} alt="Imagen del producto" />
+											)}
 										</ImagenCarrito>
 									</ProductoCarrito>
 								);
@@ -88,6 +109,7 @@ const Carrito = () => {
 							<div>
 								Total: <span>{formatearCantidad(datos[0].total_orden)}</span>
 							</div>
+							{/* Si el carrito está vacío no mostrará la opción para comprar el carrito al igual que si el estado no es en proceso */}
 							{datos[0].total_orden !== 0 && datos[0].nombreEstado === 'Orden en proceso' && (
 								<a href={`/tienda/carrito/comprar/${datos[0].idOrden}`}>
 									comprar <FontAwesomeIcon icon={faCartArrowDown} />

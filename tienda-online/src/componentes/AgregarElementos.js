@@ -13,6 +13,7 @@ const AgregarElementos = () => {
 	const { elemento } = useParams();
 	const [estadoAlerta, cambiarEstadoAlerta] = useState(false);
 	const [alerta, cambiarAlerta] = useState({});
+	// Según lo que deseen agregar les mostrará el respectivo formulario
 	return (
 		<>
 			<Helmet>

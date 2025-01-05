@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 const DatosUsuario = ({ datos, estadoFormulario, cambiarEstadoFormulario }) => {
+	// Componente para ver los datos del usuario
 	return (
 		<>
 			{datos &&

@@ -17,7 +17,9 @@ import useObtenerCarritoActual from '../hooks/useObtenerCarritoActual';
 import FormularioBuscarProducto from './FormularioBuscarProducto';
 
 const NavBar = () => {
+	// Estado para mostrar el menú
 	const [menuActivo, cambiarMenuActivo] = useState(false);
+	// Estado para mostrar el input para buscar productos por nombre
 	const [busquedaActiva, cambiarBusquedaActiva] = useState(false);
 	const { idU, rol } = useAuth();
 	const carritoActual = useObtenerCarritoActual(
@@ -35,6 +37,7 @@ const NavBar = () => {
 					<LinkInicio href="/tienda">
 						<Logo src={VGT} alt="logo" />
 					</LinkInicio>
+					{/* El carrito y busqueda por nombre se desactivarán si el usuario es operador */}
 					{rol && rol === 'C' && (
 						<GrupoIconos>
 							{carritoActual && (

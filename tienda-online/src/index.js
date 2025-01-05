@@ -5,6 +5,7 @@ import './index.css';
 import { ContenedorGlobal, CubosDecorativos } from './elementos/Maquetacion';
 
 const Index = () => {
+	//Preparación de toda la app y del fondo con cubos para toda la app
 	return (
 		<ContenedorGlobal>
 			<App />

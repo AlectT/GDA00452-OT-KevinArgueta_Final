@@ -35,6 +35,7 @@ const FormularioAgregarProducto = ({ dataActualizar, cambiarEstadoAlerta, cambia
 		formState: { errors },
 	} = useForm({ resolver: yupResolver(esquemaAgregarProducto) });
 
+	// Lógica para mostrar la imagen seleccionada en el input file
 	const previsualizarImagen = (e) => {
 		if (e) {
 			const imagen = e.target.files;
@@ -45,6 +46,7 @@ const FormularioAgregarProducto = ({ dataActualizar, cambiarEstadoAlerta, cambia
 		}
 	};
 
+	// Convertir la imagen a base64 para mandarla al API
 	const t64 = (file) =>
 		new Promise((res, rej) => {
 			const leerImagen = new FileReader();
@@ -52,12 +54,14 @@ const FormularioAgregarProducto = ({ dataActualizar, cambiarEstadoAlerta, cambia
 			leerImagen.onload = () => res(leerImagen.result);
 		});
 
+	// Lógica para evitar que usuarios con rol de cliente ingresen a la interfaz de operador
 	useEffect(() => {
 		if (rol && rol !== 'O') {
 			navigate('/tienda');
 		}
 	}, [rol, navigate]);
 
+	// Lógica para agregar un producto con o sin foto a traves de una petición al API
 	const onSubmit = (body) => {
 		if (body.foto[0]) {
 			const imagen = body.foto[0];
@@ -125,6 +129,7 @@ const FormularioAgregarProducto = ({ dataActualizar, cambiarEstadoAlerta, cambia
 		}
 	};
 
+	// Lógica para actualizar un producto con o sin foto a traves de una petición al API
 	const onUpdate = (body) => {
 		if (body.foto[0]) {
 			t64(body.foto[0]).then((res) => {
@@ -178,6 +183,7 @@ const FormularioAgregarProducto = ({ dataActualizar, cambiarEstadoAlerta, cambia
 		}
 	};
 
+	// Previsualizar la imagen del producto si se actualizará información
 	useEffect(() => {
 		if (dataActualizar && dataActualizar[0].foto !== null) {
 			const byteFoto = atob(dataActualizar[0].foto);

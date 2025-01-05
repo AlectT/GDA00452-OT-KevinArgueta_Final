@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const OpcionesMenuOperador = () => {
+	// Estados para mostrar u ocultar las opciones
 	const [estadoListaAgregar, cambiarEstadoListaAgregar] = useState(false);
 	const [estadoListaActualizar, cambiarEstadoListaActualizar] = useState(false);
 	return (

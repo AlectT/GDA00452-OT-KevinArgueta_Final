@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contextos/contextoSesion';
 
+// Función para obtener los datos que se necesiten de forma dinámica
 const useObtenerDatos = (url) => {
 	const [datos, cambiarDatos] = useState(null);
 	const { cSesion } = useAuth();

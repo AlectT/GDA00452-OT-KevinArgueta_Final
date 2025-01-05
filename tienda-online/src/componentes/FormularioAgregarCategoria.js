@@ -21,6 +21,7 @@ const FormularioAgregarCategoria = ({
 	const { cSesion, idU, rol } = useAuth();
 	const navigate = useNavigate();
 
+	// Lógica para evitar que usuarios con rol cliente ingresen a la interfaz de operador
 	useEffect(() => {
 		if (rol && rol !== 'O') {
 			navigate('/tienda');
@@ -36,6 +37,7 @@ const FormularioAgregarCategoria = ({
 		resolver: yupResolver(esquemaAgregarCategoria),
 	});
 
+	// Lógica para agregar o actualizar una categoría a través de una petición al API
 	const onSubmit = (body) => {
 		if (!dataActualizar) {
 			body.usuario = idU;

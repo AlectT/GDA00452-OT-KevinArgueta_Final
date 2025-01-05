@@ -26,6 +26,7 @@ const MenuSesion = ({ menuActivo, cambiarMenuActivo }) => {
 
 	const { datos } = useObtenerDatos('http://localhost:4000/obtenerCategorias');
 
+	// Lógica para cerrar sesión, limpiar las cookies y datos del contexto
 	const cerrarSesion = () => {
 		document.cookie.split(';').forEach(function (c) {
 			document.cookie = c
@@ -48,6 +49,7 @@ const MenuSesion = ({ menuActivo, cambiarMenuActivo }) => {
 					<BotonPerfil href={`/tienda/perfil/${idU}`}>Ver Perfil</BotonPerfil>
 				</ContenedorIcono>
 				<ContenedorListaMenu>
+					{/* Mostrar u ocultar opciones si el rol es cliente u operador */}
 					{rol && rol === 'C' && datos && <OpcionesMenuCliente categorias={datos} />}
 
 					{rol && rol === 'C' && (

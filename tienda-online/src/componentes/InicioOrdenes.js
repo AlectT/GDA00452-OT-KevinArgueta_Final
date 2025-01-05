@@ -4,6 +4,7 @@ import Ordenes from './Ordenes';
 
 const InicioOrdendes = () => {
 	const { datos } = useObtenerDatos(`http://localhost:4000/obtenerOrdenes`);
+	// Reutilización del componente de Ordenes con los datos
 	return datos && <Ordenes datos={datos} />;
 };
 

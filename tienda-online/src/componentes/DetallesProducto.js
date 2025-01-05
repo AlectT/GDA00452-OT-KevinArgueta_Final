@@ -31,7 +31,9 @@ import useObtenerCarritoActual from '../hooks/useObtenerCarritoActual';
 
 const DetallesProductos = () => {
 	const navigate = useNavigate();
+	// Estado para poder interactuar con la cantidad a traves de los botoens + y  -
 	const [cantidad, cambiarCantidad] = useState(1);
+	// Estado para saber si este producto ya se encuentra en el carrito actual del usuario
 	const [estaEnCarrito, cambiarEstaEnCarrito] = useState();
 	const { id } = useParams();
 	const { datos } = useObtenerDatos(`http://localhost:4000/obtenerProductoID/${id}`);
@@ -40,12 +42,14 @@ const DetallesProductos = () => {
 		`http://localhost:4000/obtenerCarritoActual/${idU}`,
 	);
 
+	// Si el stock del producto es 0 entonces la cantidad del input también
 	useEffect(() => {
 		if (datos && datos[0].stock === 0) {
 			cambiarCantidad(0);
 		}
 	}, [datos]);
 
+	// Determinar si el producto se encuentra en el carrito
 	useEffect(() => {
 		if (carritoActual && carritoActual !== null) {
 			const test = carritoActual.find((producto) => {
@@ -59,6 +63,8 @@ const DetallesProductos = () => {
 		}
 	}, [carritoActual, id]);
 
+	// Esquema para la cantidad de productos
+	// No lo pude poner en la carpeta de esquemas debido a que necesitaba el stock actual del producto para la validación
 	const esquemaComprarProducto = yup.object().shape({
 		cantidad: yup
 			.number()
@@ -75,6 +81,7 @@ const DetallesProductos = () => {
 		resolver: yupResolver(esquemaComprarProducto),
 	});
 
+	// Lógica para agregar el producto al carrito a traves de una petición al API
 	const onSubmit = (body) => {
 		body.cantidad = cantidad;
 		body.orden = carritoActual[0].idOrden;
@@ -104,6 +111,7 @@ const DetallesProductos = () => {
 				<NavBar />
 				{datos !== null &&
 					datos.map((producto, index) => {
+						// Lógica para transformar la foto de base64 a imagen y luego a un url
 						let url;
 						if (producto.foto !== null) {
 							const byteFoto = atob(producto.foto);
@@ -116,6 +124,7 @@ const DetallesProductos = () => {
 							const blob = new Blob([bytesImagen], { type: 'image/png' });
 							url = URL.createObjectURL(blob);
 						}
+
 						return (
 							<ContenedorMain $maquetar="producto" key={index}>
 								<ContenedorImgProducto>

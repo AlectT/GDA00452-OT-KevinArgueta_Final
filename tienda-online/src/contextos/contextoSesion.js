@@ -2,10 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 
 const ContextoSesion = React.createContext();
 
+// Función para obtener los datos de sesión del contexto creado
 const useAuth = () => {
 	return useContext(ContextoSesion);
 };
 
+// Función para establecer los datos de sesión a través de react context y cookies
 const ProveedorSesion = ({ children }) => {
 	const [cSesion, cambiarCSesion] = useState();
 	const [rol, cambiarRol] = useState();

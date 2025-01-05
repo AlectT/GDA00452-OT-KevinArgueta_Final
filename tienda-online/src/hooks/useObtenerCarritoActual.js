@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contextos/contextoSesion';
 
+// Función para obtener el carrito actual de cada usuario y de ser su primera vez ingresando en la aplicación
+// Se le crearía su nuevo carrito
 const useObtenerCarritoActual = (url) => {
 	const [carritoActual, cambiarCarritoActual] = useState(null);
 	const { cSesion, idU } = useAuth();

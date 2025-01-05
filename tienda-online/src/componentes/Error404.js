@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { NoProductos } from '../elementos/ElementosInicioTienda';
 
 const Error404 = () => {
+	// Mensaje de página no encontrada
 	return (
 		<>
 			<Helmet>

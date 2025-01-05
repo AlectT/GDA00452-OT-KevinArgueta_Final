@@ -1,7 +1,9 @@
+// Función para determinar el día siguiente de la fecha requerida
 const fechaSiguiente = (fecha) => {
 	return new Date(fecha.getTime() + 24 * 60 * 60 * 1000);
 };
 
+// Meses del año
 const meses = [
 	'Enero',
 	'Febrero',
@@ -17,6 +19,7 @@ const meses = [
 	'Diciembre',
 ];
 
+// Función para saber el tiempo transcurrido entre 2 fechas
 const diferenciaFecha = (fechaCreacion) => {
 	const fechaInicio = new Date(fechaCreacion).getTime();
 	const fechaFin = new Date().getTime();
@@ -26,6 +29,7 @@ const diferenciaFecha = (fechaCreacion) => {
 	return diferencia;
 };
 
+// Función para determinar la edad desde cierta fecha
 const calcularEdad = (fecha) => {
 	const hoy = new Date();
 	const nacimiento = new Date(fecha);

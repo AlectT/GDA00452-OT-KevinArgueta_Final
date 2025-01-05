@@ -24,6 +24,7 @@ const FormularioEditarUsuario = ({ datos, estadoFormulario, cambiarEstadoFormula
 		resolver: yupResolver(esquemaEditarUsuario),
 	});
 
+	// Lógica para actualizar la información del usuario a través de una petición al API
 	const onSubmit = (body) => {
 		fetch(`http://localhost:4000/actualizarUsuario/${idU}`, {
 			method: 'PUT',

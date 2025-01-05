@@ -20,7 +20,10 @@ import {
 import { ErrorCantidad } from '../elementos/ElementosProductos';
 
 const EditarCantidadDetalle = ({ producto, cSesion }) => {
+	// Estado para mostrar u ocultar el formulario de editar cantidad
 	const [editarCantidad, cambiarEditarCantidad] = useState(false);
+
+	// Lógica para eliminar el producto del carrito a traves de una petición al API
 	const eliminarDetalle = (idOrdenDetalles) => {
 		fetch(`http://localhost:4000/eliminarOrdenDetalles/${idOrdenDetalles}`, {
 			method: 'DELETE',
@@ -36,6 +39,8 @@ const EditarCantidadDetalle = ({ producto, cSesion }) => {
 			.catch((err) => console.log(err));
 	};
 
+	// Esquema para validar la cantidad al actualizarla
+	// No pude colocarla en la carpeta de esquemas ya que necesitaba algunos datos del producto para la validación
 	const esquemaCantidad = yup.object().shape({
 		cantidad: yup
 			.string('La cantidad debe de ser un numero')
@@ -70,6 +75,7 @@ const EditarCantidadDetalle = ({ producto, cSesion }) => {
 		resolver: yupResolver(esquemaCantidad),
 	});
 
+	// Lógica para actualizar la cantidad a través de una petición al API
 	const onSubmit = (body) => {
 		fetch(`http://localhost:4000/actualizarDetalles/${producto.idOrdenDetalles}`, {
 			method: 'PUT',

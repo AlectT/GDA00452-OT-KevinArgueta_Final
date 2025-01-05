@@ -20,6 +20,7 @@ const InicioActualizarElementos = () => {
 	const { elemento } = useParams();
 	const navigate = useNavigate('');
 	const { cSesion } = useAuth();
+	// Lógica para volver dinámico el componente y evitar repetir el código por cada formulario
 	let url;
 	switch (elemento) {
 		case 'producto':
@@ -41,6 +42,7 @@ const InicioActualizarElementos = () => {
 
 	const { datos } = useObtenerDatos(url);
 
+	// Lógica para cambiar el estado del elemento
 	const cambiarEstado = (id, estado) => {
 		const body = {
 			estado: estado,
@@ -48,6 +50,7 @@ const InicioActualizarElementos = () => {
 
 		let urlPeticion;
 
+		// Lógica para volver dinámica la petición para cambiar estados a través del API
 		switch (elemento) {
 			case 'producto':
 				urlPeticion = `http://localhost:4000/cambiarEstadoProducto/${id}`;
@@ -100,12 +103,14 @@ const InicioActualizarElementos = () => {
 					<ContenedorActualizarElementos>
 						{datos &&
 							datos.map((info) => {
+								// Generalización de datos
 								if (info.nombre_completo) {
 									info.nombre = info.nombre_completo;
 								} else if (info.idClientes) {
 									info.nombre = info.email;
 								}
 
+								// Generalización de ID's
 								if (info.idProductos) {
 									info.id = info.idProductos;
 								} else if (info.idCategoriaProductos) {

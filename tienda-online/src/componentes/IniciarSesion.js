@@ -22,7 +22,7 @@ import { ContextoSesion } from '../contextos/contextoSesion';
 import { fechaSiguiente } from '../hooks/fechas';
 
 const IniciarSesion = () => {
-	// Definicion de estados
+	// Estado para mostrar u ocultar la contraseña
 	const [tipoPassword, cambiarTipoPassword] = useState('password');
 	const navigate = useNavigate();
 	const { cSesion, cambiarCSesion, rol, cambiarRol, idU, cambiarIdU } =
@@ -39,7 +39,7 @@ const IniciarSesion = () => {
 		resolver: yupResolver(esquemaSesion),
 	});
 
-	// Logica para iniciar sesion
+	// Logica para iniciar sesion a través de una petición al API
 	const onSubmit = (body) => {
 		fetch('http://localhost:4000/iniciarSesion', {
 			method: 'POST',
@@ -66,7 +66,7 @@ const IniciarSesion = () => {
 			.catch((error) => console.log(error));
 	};
 
-	// Agregar contexto
+	// Agregar contexto al inciar sesión
 	useEffect(() => {
 		if (cSesion === null || cSesion === undefined) {
 			return;
@@ -86,6 +86,7 @@ const IniciarSesion = () => {
 		}
 	}, [cSesion, navigate, rol, idU]);
 
+	// Limpiar cookies y contexto al cerrar sesión
 	useEffect(() => {
 		document.cookie.split(';').forEach(function (c) {
 			document.cookie = c

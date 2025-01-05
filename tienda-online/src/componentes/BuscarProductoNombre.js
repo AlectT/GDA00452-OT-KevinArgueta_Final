@@ -13,6 +13,7 @@ const BuscarProductoNombre = () => {
 	const [estadoAlerta, cambiarEstadoAlerta] = useState(false);
 	const [alerta, cambiarAlerta] = useState({});
 
+	// Mostrar las coincidencias del nombre buscado
 	return (
 		<>
 			<Helmet>
@@ -21,6 +22,7 @@ const BuscarProductoNombre = () => {
 			<ContenedorPagina>
 				<NavBar />
 				<ContenedorMain $maquetar="tienda">
+					{/* Reutilización del componente de Tienda para mostrar los productos */}
 					{datos && datos !== null && (
 						<Tienda
 							productos={datos}

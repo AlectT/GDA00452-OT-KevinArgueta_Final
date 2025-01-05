@@ -41,6 +41,7 @@ const ComprarCarrito = () => {
 	const { id } = useParams();
 	const { datos } = useObtenerDatos(`http://localhost:4000/obtenerCarritoDetallado/${id}`);
 	const { cSesion, idU } = useAuth();
+	// Estados para la página responsive
 	const [verCarrito, cambiarVerCarrito] = useState(false);
 	const [verFormulario, cambiarVerFormulario] = useState(true);
 
@@ -52,6 +53,7 @@ const ComprarCarrito = () => {
 		resolver: yupResolver(esquemaComprarCarrito),
 	});
 
+	// Lógica para comprar solicitar la aprovación de la orden a los operadores
 	const onSubmit = (body) => {
 		body.estado = 12;
 		fetch(`http://localhost:4000/actualizarOrden/${id}`, {
@@ -67,6 +69,8 @@ const ComprarCarrito = () => {
 			.catch((error) => console.log(error));
 	};
 
+	// Lógica para evitar que puedan ver la orden o comprar la orden de otros usuarios
+	// ? Solo los operadores podrán ver todas las ordenes, pero no modificar los datos
 	useEffect(() => {
 		if (datos) {
 			if (datos.length === 0 || datos[0].idUsuarios !== Number(idU)) {
@@ -84,6 +88,7 @@ const ComprarCarrito = () => {
 				<NavBar />
 				<ContenedorMain>
 					<ContenedorCompra method="PUT" onSubmit={handleSubmit(onSubmit)}>
+						{/* Sección del formulario para los datos de compra */}
 						<ContenedorSeparador $verSeccion={verFormulario ? true : false} $seccion={'carrito'}>
 							<BotonVerCarrito
 								$seccion={'carrito'}
@@ -182,6 +187,7 @@ const ComprarCarrito = () => {
 								)}
 							</ContenedorBotonFormulario>
 						</ContenedorSeparador>
+						{/* Sección de resumen del carrito */}
 						<ContenedorSeparador
 							$resumen
 							$verSeccion={verCarrito ? true : false}

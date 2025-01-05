@@ -18,6 +18,7 @@ import ActualizarElementos from './componentes/ActualizarElemento';
 import ProductosGuardados from './componentes/ProductosGuardados';
 
 const App = () => {
+	// Declaración y preparación de todas las rutas y links privados para la aplicación
 	return (
 		<>
 			<ProveedorSesion>

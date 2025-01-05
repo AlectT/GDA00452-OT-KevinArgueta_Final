@@ -32,16 +32,22 @@ const Tienda = ({
 }) => {
 	const { idU } = useAuth();
 	const { datos } = useObtenerDatos('http://localhost:4000/obtenerProductos');
+	// Estado para los productos que se mostrarán
 	const [listaProductos, cambiarListaProductos] = useState(null);
+	// Obtener datos guardados en localStorage
 	const productosGuardados = localStorage.getItem('productos')
 		? JSON.parse(localStorage.getItem('productos'))
 		: [];
+
+	// Estado para los productos guardados
 	const [verMasTarde, cambiarVerMasTarde] = useState(productosGuardados);
 
+	// Guardar en localStorage cada producto agregado o removido de guardados
 	useEffect(() => {
 		localStorage.setItem('productos', JSON.stringify(verMasTarde));
 	}, [verMasTarde]);
 
+	// Establecer los productos que se mostrarán
 	useEffect(() => {
 		if (productos) {
 			return cambiarListaProductos(productos.reverse());
@@ -64,6 +70,7 @@ const Tienda = ({
 		}
 	}, [datos, productos, productosGuardadosUsuario]);
 
+	// Lógica para agregar o remover un producto de guardados
 	const guardarProducto = (producto) => {
 		const elementoGuardado = verMasTarde.find((elemento) => {
 			if (elemento[0] === producto) {
@@ -101,6 +108,7 @@ const Tienda = ({
 		<ContenedorProductos>
 			{listaProductos !== null &&
 				listaProductos.map((producto, index) => {
+					// Lógica para convertir la imagen de los productos a imagenes y luego a un url
 					let url;
 					if (producto.foto !== null) {
 						const byteFoto = atob(producto.foto);
@@ -114,6 +122,7 @@ const Tienda = ({
 						url = URL.createObjectURL(blob);
 					}
 
+					// Lógica para saber si el producto está guardado o no en ver más tarde
 					const elementoGuardado = verMasTarde.find((elemento) => {
 						if (elemento[0] === producto.idProductos && elemento[1] === Number(idU)) {
 							return true;
@@ -124,6 +133,7 @@ const Tienda = ({
 
 					return (
 						<ContenedorProducto key={index}>
+							{/* Lógica para etiquetas según sus estados */}
 							{producto.stock < 10 && producto.idEstados !== 2 && <EtiquetaPocasUnidades />}
 							{producto.stock === 0 && <EtiquetaAgotado />}
 							{diferenciaFecha(producto.fecha_creacion) < 3 &&

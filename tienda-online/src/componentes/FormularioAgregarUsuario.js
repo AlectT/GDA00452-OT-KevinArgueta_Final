@@ -20,9 +20,11 @@ const FormularioAgregarUsuario = ({ dataActualizar, cambiarEstadoAlerta, cambiar
 	const { datos } = useObtenerDatos('http://localhost:4000/obtenerClientes');
 	const [data, cambiarData] = useState();
 	const { cSesion, rol } = useAuth();
+	// Habilitar o deshabilitar el select de cliente si el usuario tendrá rol de cliente u operador
 	const [clienteHabilitado, cambiarClienteHabilitado] = useState(false);
 	const navigate = useNavigate();
 
+	// Lógica para evitar que usuarios con rol de cliente ingresen a la interfeaz de operador
 	useEffect(() => {
 		if (rol && rol !== 'O') {
 			navigate('/tienda');
@@ -38,12 +40,14 @@ const FormularioAgregarUsuario = ({ dataActualizar, cambiarEstadoAlerta, cambiar
 		resolver: yupResolver(!data ? esquemaAgregarUsuario : esquemaActualizarUsuario),
 	});
 
+	// Si se actualizará información se colocará en los inputs
 	useEffect(() => {
 		if (dataActualizar && dataActualizar[0]) {
 			return cambiarData(dataActualizar[0]);
 		}
 	}, [dataActualizar, cambiarData]);
 
+	// Lógica para agregar o actualizar usuarios a través de una petición al API
 	const onSubmit = (body) => {
 		if (!data) {
 			if (body.rol === 2) {
@@ -100,6 +104,7 @@ const FormularioAgregarUsuario = ({ dataActualizar, cambiarEstadoAlerta, cambiar
 		}
 	};
 
+	// Habilitar o deshabilitar el select de cliente según el rol seleccionado
 	const habilitarInput = (e) => {
 		if (Number(e) === 2) {
 			cambiarClienteHabilitado(true);

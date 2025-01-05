@@ -17,6 +17,7 @@ const FormularioAgregarCliente = ({ dataActualizar, cambiarEstadoAlerta, cambiar
 	const { cSesion, idU, rol } = useAuth();
 	const navigate = useNavigate();
 
+	//Lógica para evitar que usuarios con rol cliente ingresen a la interfaz de operador
 	useEffect(() => {
 		if (rol && rol !== 'O') {
 			navigate('/tienda');
@@ -32,6 +33,7 @@ const FormularioAgregarCliente = ({ dataActualizar, cambiarEstadoAlerta, cambiar
 		resolver: yupResolver(esquemaAgregarCliente),
 	});
 
+	// Lógica para subit o actualizar un cliente
 	const onSubmit = (body) => {
 		if (!dataActualizar) {
 			body.usuario = idU;

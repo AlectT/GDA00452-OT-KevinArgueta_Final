@@ -13,8 +13,10 @@ const Perfil = () => {
 	const { id } = useParams();
 	const { idU } = useAuth();
 	const { datos } = useObtenerDatos(`http://localhost:4000/obtenerUsuarioID/${id}`);
+	// Estado para mostrar el formulario para cambiar los datos del usuario
 	const [estadoFormulario, cambiarEstadoFormulario] = useState();
 
+	// Lógica para evitar que vean información del perfil de otros usuarios
 	useEffect(() => {
 		if (datos) {
 			if (datos.length === 0 || datos[0].idUsuarios !== Number(idU)) {
@@ -31,6 +33,7 @@ const Perfil = () => {
 			<ContenedorPagina>
 				<NavBar />
 				<ContenedorMain>
+					{/* Mostrar el contenedor con la información o el formulario según el estado */}
 					{datos && datos[0] && !estadoFormulario && (
 						<DatosUsuario
 							datos={datos}

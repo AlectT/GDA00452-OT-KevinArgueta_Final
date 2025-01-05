@@ -20,6 +20,7 @@ const Inicio = () => {
 			<ContenedorPagina>
 				<NavBar />
 				<ContenedorMain $maquetar="tienda">
+					{/* Dependiendo del rol se mostrará una u otra interfaz */}
 					{rol && rol === 'C' && (
 						<Tienda cambiarAlerta={cambiarAlerta} cambiarEstadoAlerta={cambiarEstadoAlerta} />
 					)}

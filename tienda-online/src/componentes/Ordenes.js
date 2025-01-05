@@ -15,6 +15,7 @@ const Ordenes = ({ ordenes, datos }) => {
 	const { rol, cSesion } = useAuth();
 	const [carritos, cambiarCarritos] = useState(null);
 
+	// Filtrar los carritos según el estado de orden
 	useEffect(() => {
 		if (ordenes) {
 			let nuevoArray = [];
@@ -32,7 +33,7 @@ const Ordenes = ({ ordenes, datos }) => {
 					});
 				}
 			}
-			cambiarCarritos(nuevoArray.reverse());
+			cambiarCarritos(nuevoArray);
 		}
 
 		if (datos && rol) {
@@ -50,11 +51,12 @@ const Ordenes = ({ ordenes, datos }) => {
 						});
 					}
 				}
-				cambiarCarritos(nuevoArray.reverse());
+				cambiarCarritos(nuevoArray);
 			}
 		}
 	}, [datos, ordenes, rol]);
 
+	// Lógica para cambiar el estado a orden entregada a través de una petición al API
 	const entregarPedido = (idOrden) => {
 		const body = {
 			estado: 10,
@@ -74,6 +76,7 @@ const Ordenes = ({ ordenes, datos }) => {
 			.catch((err) => console.log(err));
 	};
 
+	//Lógica para rechazar o cancelar pedido + limpiar el carrito a través de una petición al API
 	const cancelarRechazarPedido = (idOrden) => {
 		const body = {
 			estado: rol === 'C' ? 11 : 8,

@@ -13,10 +13,12 @@ const FormularioBuscarProducto = ({ busquedaActiva, cambiarBusquedaActiva }) => 
 		resolver: yupResolver(esquemaBuscarProducto),
 	});
 
+	// Lógica para buscar el productos
 	const onSubmit = (body) => {
 		navigate(`/tienda/productos/${body.producto}`);
 	};
 
+	// Input para buscar el producto
 	return (
 		<ContenedorBuscarProducto method="POST" onSubmit={handleSubmit(onSubmit)}>
 			<input type="text" {...register('producto')} />

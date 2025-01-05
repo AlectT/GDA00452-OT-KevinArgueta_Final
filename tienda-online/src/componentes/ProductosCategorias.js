@@ -21,6 +21,7 @@ const ProductosCategorias = () => {
 			<ContenedorPagina>
 				<NavBar />
 				<ContenedorMain $maquetar="tienda">
+					{/* Reutilización del componente tienda para los productos por categorías */}
 					{datos && datos !== null && (
 						<Tienda
 							productos={datos}

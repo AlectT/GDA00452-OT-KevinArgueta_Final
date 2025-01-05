@@ -15,6 +15,8 @@ const ActualizarElementos = () => {
 	const navigate = useNavigate('');
 	const [estadoAlerta, cambiarEstadoAlerta] = useState(false);
 	const [alerta, cambiarAlerta] = useState({});
+
+	// Lógica para volver el componente dinámico y evitar repetir el código para cada formulario
 	let url;
 	switch (elemento) {
 		case 'producto':
@@ -36,6 +38,7 @@ const ActualizarElementos = () => {
 
 	const { datos } = useObtenerDatos(url);
 
+	//Según lo que deseen actualizar les mostrará el respectivo formulario con la información ya registrada de lo que deseen actualizar
 	return (
 		<>
 			<Helmet>

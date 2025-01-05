@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const Alerta = ({ color, mensaje, estadoAlerta, cambiarEstadoAlerta }) => {
+	// Lógica para remover las alertas tras 5 segundos
 	useEffect(() => {
 		let tiempo;
 		if (estadoAlerta === true) {

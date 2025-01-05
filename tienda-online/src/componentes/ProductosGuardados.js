@@ -7,14 +7,17 @@ import { useAuth } from '../contextos/contextoSesion';
 import Alerta from './Alerta';
 
 const ProductosGuardados = () => {
+	// Obtener los productos guardados almacenados en localstorage
 	const productosGuardados = localStorage.getItem('productos')
 		? JSON.parse(localStorage.getItem('productos'))
 		: [];
+	// Estado para guardar o remover elementos de guardar en ver más tarde
 	const [verMasTarde, cambiarVerMasTarde] = useState(productosGuardados);
 	const { idU } = useAuth();
 	const [estadoAlerta, cambiarEstadoAlerta] = useState(false);
 	const [alerta, cambiarAlerta] = useState({});
 
+	// Filtrar los elementos guardados
 	useEffect(() => {
 		cambiarVerMasTarde(
 			verMasTarde.filter((elemento) => {
@@ -35,6 +38,7 @@ const ProductosGuardados = () => {
 			<ContenedorPagina>
 				<NavBar />
 				<ContenedorMain $maquetar="tienda">
+					{/* Reutilización del componente tienda para los productos guardados */}
 					{verMasTarde && verMasTarde !== null && (
 						<Tienda
 							productosGuardadosUsuario={verMasTarde}

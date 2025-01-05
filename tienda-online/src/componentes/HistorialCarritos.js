@@ -13,6 +13,8 @@ const HistorialCarritos = () => {
 	const navigate = useNavigate();
 	const { datos } = useObtenerDatos(`http://localhost:4000/obtenerCarritosUsuario/${id}`);
 
+	// Lógica para evitar que vean historiales de otros usuarios
+	// ? Solo los operadores podrán ver todas las ordenes
 	useEffect(() => {
 		if (datos) {
 			if (datos.length === 0 || datos[0].idUsuarios !== Number(idU)) {
@@ -28,6 +30,7 @@ const HistorialCarritos = () => {
 			</Helmet>
 			<ContenedorPagina>
 				<NavBar />
+				{/* Reutilización del componente ordenes con los datos del historial */}
 				{datos && <Ordenes ordenes={datos} />}
 			</ContenedorPagina>
 		</>

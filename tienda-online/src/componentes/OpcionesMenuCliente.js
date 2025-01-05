@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 const OpcionesMenuCliente = ({ categorias }) => {
+	// Estado para mostrar u ocultar las opciones de categorías
 	const [estadoListaCategorias, cambiarEstadoListaCategorias] = useState(false);
 
 	return (
