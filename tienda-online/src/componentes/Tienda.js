@@ -139,11 +139,9 @@ const Tienda = ({
 							{diferenciaFecha(producto.fecha_creacion) < 3 &&
 								producto.idEstados !== 2 &&
 								producto.stock !== 0 && <EtiquetaNuevo />}
-							{producto.stock === 0 && <EtiquetaAgotado />}
-							{diferenciaFecha(producto.fecha_creacion) < 3 &&
-								producto.stock !== 0 &&
-								producto.idEstados !== 1 && <EtiquetaNuevo />}
 							{producto.idEstados === 2 && <EtiquetaNoDisponible />}
+							{producto.estadoCategoria === 4 && <EtiquetaNoDisponible />}
+							{producto.stock === 0 && <EtiquetaAgotado />}
 							<ContenedorImagen>
 								{url ? (
 									<ImagenProducto src={url} alt="Imagen del producto" />

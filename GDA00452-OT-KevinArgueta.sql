@@ -548,7 +548,7 @@ select Orden.*, Estados.nombre from Orden left join Estados on Orden.idEstados =
 
 create view vProductos
 as
-select Productos.*, Estados.nombre as nombreEstado, CategoriaProductos.nombre as nombreCategoria, Usuarios.nombre_completo as nombreUsuario from Productos inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos inner join Estados on Productos.idEstados = Estados.idEstados inner join Usuarios on Productos.idUsuarios = Usuarios.idUsuarios ;
+select Productos.*, Estados.nombre as nombreEstado, CategoriaProductos.nombre as nombreCategoria, CategoriaProductos.idEstados as estadoCategoria, Usuarios.nombre_completo as nombreUsuario from Productos inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos inner join Estados on Productos.idEstados = Estados.idEstados inner join Usuarios on Productos.idUsuarios = Usuarios.idUsuarios ;
 
 create view vOrdenDetalles
 as
@@ -596,7 +596,7 @@ create procedure pProductoID
   @id int
 as
   begin
-    select Productos.*, CategoriaProductos.nombre as nombreCategoria, Estados.nombre as nombreEstado from Productos inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos inner join Estados on Productos.idEstados = Estados.idEstados where idProductos = @id;
+    select Productos.*, CategoriaProductos.nombre as nombreCategoria,CategoriaProductos.idEstados as estadoCategoria, Estados.nombre as nombreEstado from Productos inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos inner join Estados on Productos.idEstados = Estados.idEstados where idProductos = @id;
   end;
   
 create procedure pOrdenID
@@ -672,14 +672,14 @@ create procedure pBuscarProductoNombre
   @id varchar(45)
 as
   begin
-    select Productos.*, Estados.nombre as nombreEstado, CategoriaProductos.nombre as nombreCategoria from Productos inner join Estados on Productos.idEstados = Estados.idEstados inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos where Productos.nombre like '%'+@id+'%';
+    select Productos.*, Estados.nombre as nombreEstado, CategoriaProductos.nombre as nombreCategoria, CategoriaProductos.idEstados as estadoCategoria from Productos inner join Estados on Productos.idEstados = Estados.idEstados inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos where Productos.nombre like '%'+@id+'%';
   end;
 
 create procedure pBuscarProductosCategoria
   @id varchar(45)
 as
   begin
-    select Productos.*, Estados.nombre as nombreEstado, CategoriaProductos.nombre as nombreCategoria from Productos inner join Estados on Productos.idEstados = Estados.idEstados inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos where CategoriaProductos.nombre = @id;
+    select Productos.*, Estados.nombre as nombreEstado, CategoriaProductos.nombre as nombreCategoria, CategoriaProductos.idEstados as estadoCategoria from Productos inner join Estados on Productos.idEstados = Estados.idEstados inner join CategoriaProductos on Productos.idCategoriaProductos = CategoriaProductos.idCategoriaProductos where CategoriaProductos.nombre = @id;
   end;
 
 create procedure pHistorialCompras

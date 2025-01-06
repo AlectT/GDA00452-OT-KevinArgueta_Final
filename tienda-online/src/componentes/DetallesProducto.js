@@ -10,7 +10,6 @@ import {
 	BotonAgregar,
 	ContenedorCantidad,
 	ErrorCantidad,
-	ProductoAgotado,
 } from '../elementos/ElementosProductos';
 import logo from '../imagenes/logoPeque.png';
 import { Helmet } from 'react-helmet';
@@ -28,6 +27,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAuth } from '../contextos/contextoSesion';
 import useObtenerCarritoActual from '../hooks/useObtenerCarritoActual';
+import { EtiquetaAgotado, EtiquetaNoDisponible } from '../elementos/ElementosInicioTienda';
 
 const DetallesProductos = () => {
 	const navigate = useNavigate();
@@ -133,6 +133,10 @@ const DetallesProductos = () => {
 									) : (
 										<img src={logo} alt="Imagen del producto" />
 									)}
+									{producto.stock === 0 && <EtiquetaAgotado />}
+									{(producto.idEstados === 2 || producto.estadoCategoria === 4) && (
+										<EtiquetaNoDisponible />
+									)}
 								</ContenedorImgProducto>
 								<ContenedorDatosProducto method="POST" onSubmit={handleSubmit(onSubmit)}>
 									<AgruparDetalles>
@@ -190,17 +194,17 @@ const DetallesProductos = () => {
 											</div>
 										</ContenedorCantidad>
 									</AgruparDetalles>
-									{producto.stock === 0 && <ProductoAgotado>Producto agotado!</ProductoAgotado>}
-									{producto.idEstados === 2 && (
-										<ProductoAgotado>Producto no disponible!</ProductoAgotado>
-									)}
+
 									{errors.cantidad && <ErrorCantidad>{errors.cantidad.message}</ErrorCantidad>}
-									{!estaEnCarrito && producto.stock > 0 && producto.idEstados !== 2 && (
-										<BotonAgregar type="submit">
-											<span>agregar al carrito</span>
-											<FontAwesomeIcon icon={faCartPlus} />
-										</BotonAgregar>
-									)}
+									{!estaEnCarrito &&
+										producto.stock > 0 &&
+										producto.idEstados !== 2 &&
+										producto.estadoCategoria !== 4 && (
+											<BotonAgregar type="submit">
+												<span>agregar al carrito</span>
+												<FontAwesomeIcon icon={faCartPlus} />
+											</BotonAgregar>
+										)}
 									{estaEnCarrito && (
 										<BotonAgregar
 											$estaEnCarrito

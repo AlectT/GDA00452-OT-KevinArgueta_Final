@@ -33,7 +33,7 @@ const Ordenes = ({ ordenes, datos }) => {
 					});
 				}
 			}
-			cambiarCarritos(nuevoArray);
+			cambiarCarritos(nuevoArray.reverse());
 		}
 
 		if (datos && rol) {
@@ -51,7 +51,7 @@ const Ordenes = ({ ordenes, datos }) => {
 						});
 					}
 				}
-				cambiarCarritos(nuevoArray);
+				cambiarCarritos(nuevoArray.reverse());
 			}
 		}
 	}, [datos, ordenes, rol]);
@@ -147,6 +147,7 @@ const Ordenes = ({ ordenes, datos }) => {
 									</ContenedorDatosOrden>
 									<NumeroOrden>#{carrito.idOrden}</NumeroOrden>
 									<ContenedorAccionesOrden>
+										{/* Lógica para mostrar u ocultar los botones de cada orden */}
 										{carrito.nombreEstado === 'Solicitud de orden' && (
 											<>
 												{rol && rol === 'C' ? (
@@ -177,6 +178,11 @@ const Ordenes = ({ ordenes, datos }) => {
 													</>
 												)}
 											</>
+										)}
+										{carrito.nombreEstado === 'Entregado' && (
+											<AccionOrden $ver href={`/tienda/carrito/${carrito.idOrden}`}>
+												Ver Carrito
+											</AccionOrden>
 										)}
 									</ContenedorAccionesOrden>
 								</ContenedorOrden>

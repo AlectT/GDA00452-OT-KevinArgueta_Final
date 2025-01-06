@@ -8,7 +8,7 @@ const ContenedorImgProducto = styled.div`
 	justify-content: center;
 	background: rgb(255, 255, 255);
 	border-radius: 15px;
-	overflow: hidden;
+	position: relative;
 
 	@media (max-width: 800px) {
 		width: 250px;
