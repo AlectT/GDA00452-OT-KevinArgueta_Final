@@ -115,6 +115,7 @@ const LogoFormulario = styled.div`
 	& > img {
 		width: 275px;
 		height: 100px;
+		object-fit: cover;
 	}
 `;
 

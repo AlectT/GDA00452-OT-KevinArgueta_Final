@@ -10,7 +10,7 @@ import {
 } from '../elementos/ElementosNav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
-import VGT from '../imagenes/VGT.png';
+import MTO from '../imagenes/MTO.png';
 import MenuSesion from './MenuSesion';
 import { useAuth } from '../contextos/contextoSesion';
 import useObtenerCarritoActual from '../hooks/useObtenerCarritoActual';
@@ -35,7 +35,7 @@ const NavBar = () => {
 						<FontAwesomeIcon icon={faBars} />
 					</IconosNav>
 					<LinkInicio href="/tienda">
-						<Logo src={VGT} alt="logo" />
+						<Logo src={MTO} alt="logo" />
 					</LinkInicio>
 					{/* El carrito y busqueda por nombre se desactivarán si el usuario es operador */}
 					{rol && rol === 'C' && (

@@ -16,7 +16,7 @@ import {
 } from '../elementos/ElementosFormularioInicioSesion';
 import Password from './Password';
 import Alerta from './Alerta';
-import VGT from '../imagenes/VGT.png';
+import MTO from '../imagenes/MTO.png';
 import esquemaSesion from '../esquemas/esquemaSesion';
 import { ContextoSesion } from '../contextos/contextoSesion';
 import { fechaSiguiente } from '../hooks/fechas';
@@ -105,7 +105,7 @@ const IniciarSesion = () => {
 			</Helmet>
 			<ContenedorFormulario method="POST" onSubmit={handleSubmit(onSubmit)}>
 				<LogoFormulario>
-					<img src={VGT} alt="logo" />
+					<img src={MTO} alt="logo" />
 				</LogoFormulario>
 				<ContenedorLabel>
 					<Label>

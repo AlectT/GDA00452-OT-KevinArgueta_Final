@@ -21,7 +21,7 @@ const ContenedorElementosNav = styled.div`
 `;
 
 const LinkInicio = styled.a`
-	width: 200px;
+	width: 225px;
 	height: 80px;
 	cursor: pointer;
 	text-decoration: none;
@@ -36,8 +36,9 @@ const LinkInicio = styled.a`
 `;
 
 const Logo = styled.img`
-	width: 200px;
+	width: 225px;
 	height: 100%;
+	object-fit: cover;
 
 	@media (max-width: 800px) {
 		width: 150px;

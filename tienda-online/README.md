@@ -60,9 +60,9 @@ El programa necesita para funcionar
 - _Carpeta imagenes_
   En esta carpeta están diferentes imagenes del logo para el proyecto.
 
-## Variedades GT
+## Mi tiendita online
 
-Para poder personalizar un poco más el proyecto he optado por nombrar a la tienda Variedades GT, junto con la elaboración de 3 logos algo simples para la tienda. Los colores elegidos para el logo son mayormente blanco, azul oscuro y negro.
+Previamente le había colocado Variedades GT, pero decidido renombrarlo al nombre requerido, junto con la elaboración de 3 logos algo simples para la tienda. Los colores elegidos para el logo son mayormente blanco, azul oscuro y negro.
 
 ### Colores de la tienda
 
