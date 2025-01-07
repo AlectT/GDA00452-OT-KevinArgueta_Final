@@ -25,7 +25,7 @@ const ContenedorProducto = styled.article`
 	min-width: 250px;
 	max-width: 270px;
 	height: 350px;
-	background: rgb(12, 7, 46);
+	background: rgba(12, 7, 46, 0.71);
 	border-radius: 15px;
 	display: flex;
 	align-items: center;

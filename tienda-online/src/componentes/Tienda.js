@@ -73,7 +73,7 @@ const Tienda = ({
 	// Lógica para agregar o remover un producto de guardados
 	const guardarProducto = (producto) => {
 		const elementoGuardado = verMasTarde.find((elemento) => {
-			if (elemento[0] === producto) {
+			if (elemento[0] === producto && elemento[1] === Number(idU)) {
 				return true;
 			} else {
 				return false;
@@ -168,7 +168,11 @@ const Tienda = ({
 					);
 				})}
 			{listaProductos !== null && listaProductos.length === 0 && (
-				<NoProductos>No encontramos lo que buscas</NoProductos>
+				<NoProductos>
+					{!productosGuardadosUsuario
+						? 'No encontramos lo que buscas'
+						: 'No hay productos guardados'}
+				</NoProductos>
 			)}
 		</ContenedorProductos>
 	);
